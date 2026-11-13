@@ -8,6 +8,8 @@ import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+
 from pydantic import BaseModel, Field
 
 
@@ -46,14 +48,17 @@ app = FastAPI(
     description="AI-powered cold-chain emergency response platform",
     version="0.2.0"
 )
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_ORIGIN],
+    allow_origins=[
+        "https://coldchain-relay.vercel.app",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # In-memory booking and payment tracking.
