@@ -31,6 +31,7 @@ PAYPAL_BASE_URL = os.getenv(
 FRONTEND_ORIGIN = os.getenv(
     "FRONTEND_ORIGIN",
     "http://localhost:5173"
+
 )
 
 # Demo PayPal transaction amount.
@@ -216,8 +217,8 @@ async def create_paypal_order(payload: CreateOrderRequest):
             "paypal": {
                 "experience_context": {
                     "brand_name": "ColdChain Relay",
-                    "return_url": "http://localhost:5173",
-                    "cancel_url": "http://localhost:5173",
+                    "return_url": FRONTEND_ORIGIN,
+                    "cancel_url": FRONTEND_ORIGIN,
                     "user_action": "CONTINUE",
                     "shipping_preference": "NO_SHIPPING"
                 }
